@@ -1,5 +1,5 @@
 package main.java.project.composition;
-//---- SparklingWater:
+//SparklingWater:
 //++наследуется от Water
 //++содеждит приватные поля boolean isOpened, Bubble[] bubbles
 //++содержит конструктор SparklingWater(), который вызывает внутренний метод isOpened();
@@ -21,15 +21,17 @@ public class SparklingWater extends Water {
     public SparklingWater(){
         isOpened();
     }
-    public void pump(Bubble[] bubble) {
-        bubbles = bubble;
+    public void pump(Bubble[] bubbles) {
+        this.bubbles = bubbles;
+
     }
 
     public void degas() { //private or public
-        System.out.println("Starting degas..");
-        for (int i = 0; i < bubbles.length - 1; i++) {
-            this.bubbles[i].cramp();
-            this.bubbles[i] = null;
+        int numberOfBubbles = bubbles.length;
+        System.out.printf("Starting degas process...").println();
+        for (int i = 0; i < numberOfBubbles - 1; i++) {
+            bubbles[i].cramp();
+            bubbles[i] = null;
         }
         System.out.println("Degassing is finished.");
     }
@@ -40,6 +42,7 @@ public class SparklingWater extends Water {
     private void isOpened() {
 
     }
+
     public boolean isSparkle() {
         return isSparkle;
     }
