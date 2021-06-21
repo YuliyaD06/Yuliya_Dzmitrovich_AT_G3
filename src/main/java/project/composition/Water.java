@@ -1,11 +1,12 @@
 package main.java.project.composition;
-//---- Water:
-//++содеждит приватные поля String color = "no", String transparency = "transparent", String smell = "no", int temperature = 0
-//++содеждит геттеры и сеттеры ко всем полям
+/*Water:
+++содеждит приватные поля String color = "no", String transparency = "transparent", String smell = "no", int temperature = 0
+++содеждит геттеры и сеттеры ко всем полям*/
+
 public abstract class Water {
     
     private String color = "no";
-    private String transparency = "transperent";
+    private String transparency = "transparent";
     private String smell = "no";
     public int temperature = 0;
 
