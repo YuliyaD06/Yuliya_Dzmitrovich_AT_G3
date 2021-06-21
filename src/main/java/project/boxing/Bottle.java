@@ -17,24 +17,30 @@ public class Bottle {
 
     public Bottle(double volume) {
         this.volume = volume;
-        Bubble[] bubbles = new Bubble[(int)(10000*volume)];
-        for (int l = 0; l < bubbles.length; l++) {
-            bubbles[l] = new Bubble("gas");
+        System.out.printf("The bottle of "+ volume + " volume is created.").println();
+        Bubble[] bubbles = new Bubble[(int)(10*volume)];
+        int i;
+        for (i = 0; i < bubbles.length; i++) {
+            bubbles[i] = new Bubble("gas");
         }
+        System.out.printf("There are " + i + " bubbles in the bottle.").println();
         water.cramp(bubbles);
     }
+
     public void open(){
         this.water.setOpened(true);
+        System.out.printf("The bottle is opened.").println();
         this.water.degas();
-        System.out.println("Bottle is opened.");
-    }
-    public void warm(int temperature){
-        water.temperature = temperature;
     }
     public SparklingWater getWater() {
         return water;
     }
+
     public void setWater(SparklingWater water) {
-        this.water = water;
+        water = new SparklingWater();
     }
+    public void warm(int temperature){
+        this.water.temperature = temperature;
+    }
+
 }
