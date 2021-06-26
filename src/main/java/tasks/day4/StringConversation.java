@@ -13,8 +13,8 @@ public class StringConversation {
         String date = "22.00 07.09.2020";
         System.out.println("Date before formatting: " + date);
 
-        DateFormat input = new SimpleDateFormat("hh.mm dd.MM.yyyy");
-        DateFormat formatter = new SimpleDateFormat("MMMM, dd, yyyy hh:mm");
+        DateFormat input = new SimpleDateFormat("HH.mm dd.MM.yyyy");
+        DateFormat formatter = new SimpleDateFormat("MMMM, dd, yyyy HH:mm");
         Date parsedInput = input.parse(date);
         String result = formatter.format(parsedInput);
 
