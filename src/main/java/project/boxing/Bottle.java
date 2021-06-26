@@ -19,17 +19,16 @@ public class Bottle {
         this.volume = volume;
         System.out.printf("The bottle of "+ volume + " volume is created.").println();
         Bubble[] bubbles = new Bubble[(int)(10*volume)];
-        int i;
+/*        int i;
         for (i = 0; i < bubbles.length; i++) {
             bubbles[i] = new Bubble("gas");
-        }
-        System.out.printf("There are " + i + " bubbles in the bottle.").println();
-        water.cramp(bubbles);
+        }*/
+        //System.out.printf("There are " + i + " bubbles in the bottle.").println();
+        this.water.pump(bubbles);
     }
 
     public void open(){
         this.water.setOpened(true);
-        System.out.printf("The bottle is opened.").println();
         this.water.degas();
     }
     public SparklingWater getWater() {

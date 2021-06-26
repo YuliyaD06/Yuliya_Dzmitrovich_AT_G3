@@ -23,20 +23,31 @@ public class SparklingWater extends Water {
     }
     public void pump(Bubble[] bubbles) {
         this.bubbles = bubbles;
-
+        int i;
+        for (i = 0; i < bubbles.length; i++) {
+            Bubble bubble = new Bubble("gas");
+            bubble = bubbles[i];
+        }
+        System.out.printf("There are " + i + " bubbles in the bottle.").println();
     }
 
-    public void degas() { //private or public
+    public void degas(){
         int numberOfBubbles = bubbles.length;
+        int speed = 10+5;
+        int time = numberOfBubbles/speed;
         System.out.printf("Starting degas process...").println();
-        for (int i = 0; i < numberOfBubbles - 1; i++) {
+
+/*        for (int i = 0; i < bubbles.length - 1; i++) {
             bubbles[i].cramp();
             bubbles[i] = null;
-        }
+        }*/
+
         System.out.println("Degassing is finished.");
     }
+
     public void setOpened(boolean isOpened){
         this.isOpened = true;
+        System.out.printf("The bottle is opened.").println();
     }
 
     private void isOpened() {
