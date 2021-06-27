@@ -37,10 +37,10 @@ public class SparklingWater extends Water {
         int time = numberOfBubbles/speed;
         System.out.printf("Starting degas process...").println();
 
-/*        for (int i = 0; i < bubbles.length - 1; i++) {
+        for (int i = 0; i < bubbles.length - 1; i++) {
             bubbles[i].cramp();
             bubbles[i] = null;
-        }*/
+        }
 
         System.out.println("Degassing is finished.");
     }
@@ -51,7 +51,9 @@ public class SparklingWater extends Water {
     }
 
     private void isOpened() {
-
+/*        if (isOpened){
+            degas();
+        }*/
     }
 
     public boolean isSparkle() {
