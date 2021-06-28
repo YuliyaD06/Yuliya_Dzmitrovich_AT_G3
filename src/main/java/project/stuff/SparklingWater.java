@@ -16,11 +16,12 @@ package main.java.project.composition;
 public class SparklingWater extends Water {
     private boolean isOpened;
     private Bubble[] bubbles;
-    public boolean isSparkle;
+    private boolean isSparkle;
 
-    public SparklingWater(){
+    public SparklingWater() {
         isOpened();
     }
+
     public void pump(Bubble[] bubbles) {
         this.bubbles = bubbles;
         int i;
@@ -31,10 +32,10 @@ public class SparklingWater extends Water {
         System.out.printf("There are " + i + " bubbles in the bottle.").println();
     }
 
-    public void degas(){
+    public void degas() {
         int numberOfBubbles = bubbles.length;
-        int speed = 10+5;
-        int time = numberOfBubbles/speed;
+        int speed = 10 + 5;
+        int time = numberOfBubbles / speed;
         System.out.printf("Starting degas process...").println();
 
         for (int i = 0; i < bubbles.length - 1; i++) {
@@ -45,23 +46,23 @@ public class SparklingWater extends Water {
         System.out.println("Degassing is finished.");
     }
 
-    public void setOpened(boolean isOpened){
-        this.isOpened = true;
+    private void isOpened() {
+        if (this.isOpened){
+            degas();
+        }
+    }
+
+    public void setOpened(boolean opened) {
+        isOpened = opened;
         System.out.printf("The bottle is opened.").println();
     }
 
-    private void isOpened() {
-/*        if (isOpened){
-            degas();
-        }*/
-    }
+        public boolean isSparkle () {
+            return isSparkle;
+        }
 
-    public boolean isSparkle() {
-        return isSparkle;
-    }
+        @Override
+        public void cramp (Bubble[]bubbles){
 
-    @Override
-    public void cramp(Bubble[] bubbles) {
-
+        }
     }
-}
