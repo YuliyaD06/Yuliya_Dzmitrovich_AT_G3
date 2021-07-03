@@ -1,14 +1,23 @@
-package main.java.project.composition;
+package main.java.project.stuff;
 /*Water:
 ++содеждит приватные поля String color = "no", String transparency = "transparent", String smell = "no", int temperature = 0
 ++содеждит геттеры и сеттеры ко всем полям*/
 
-public abstract class Water {
+public abstract class Water implements Transformable{
     
     private String color = "no";
     private String transparency = "transparent";
     private String smell = "no";
     private int temperature = 0;
+
+    public Water() {
+        this.color = color;
+        this.transparency = transparency;
+        this.smell = smell;
+        this.temperature = temperature;
+    }
+
+    public abstract void cramp(Bubble[] bubbles);
 
     public String getColor() {
         return color;
@@ -35,5 +44,8 @@ public abstract class Water {
         this.transparency = transparency;
     }
 
-    public abstract void cramp(Bubble[] bubbles);
+    @Override
+    public void mix() {
+
+    }
 }
