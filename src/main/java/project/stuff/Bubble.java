@@ -1,4 +1,4 @@
-package main.java.project.composition;
+package main.java.project.stuff;
 /*Bubble:
 ++ содеждит приватные поля double volume = 03, String gas;
 ++ содержит конструктор Bubble(String gas), в который передается строка с названием газа пузырька
@@ -15,7 +15,7 @@ public class Bubble {
     }
 
     public static void cramp(){
-        System.out.println("Cramp!");
+        System.out.printf("Cramp! ");
     }
 
     public double getVolume() {
