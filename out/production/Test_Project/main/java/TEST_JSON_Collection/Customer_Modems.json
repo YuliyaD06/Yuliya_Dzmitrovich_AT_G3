@@ -1,0 +1,18 @@
+{
+  "statusCode": "20000001",
+  "statusDescription": "SUCCESS",
+  "data": {
+    "deviceList": [
+      {
+        "id": "DEAP718410AC",
+        "name": "Hall",
+        "type": "ModemGateway",
+        "modelName": "TG2492LG-85",
+        "modelClass": "MV1",
+        "macAddress": "AC:22:05:9E:1B:67",
+        "lastActiveDate": "2020-04-21T19:05:23Z",
+        "state": "Initialized"
+      }
+    ]
+  }
+}

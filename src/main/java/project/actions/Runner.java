@@ -1,11 +1,13 @@
 package main.java.project.actions;
 
 import main.java.project.boxing.Bottle;
+import main.java.project.type.Plastic;
 
 public class Runner {
     public static void main(String[] args){
 
-        Bottle theBottle1 = new Bottle(0.5);
+        Plastic plasticBottle = new Plastic(0.1, "White", 0.85);
+        Bottle theBottle1 = new Bottle(0.5, 2.0, 600, plasticBottle);
         theBottle1.open();
         //factory.theBottle2.open();
         //factory.theBottle3.open();

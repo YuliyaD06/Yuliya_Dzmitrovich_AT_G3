@@ -1,0 +1,711 @@
+{
+	"info": {
+		"_postman_id": "f827315c-de46-4514-9531-411c9486fe82",
+		"name": "CH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CAS",
+			"item": [
+				{
+					"name": "config",
+					"item": [
+						{
+							"name": "config",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{config}}/config?country=CH&platform=IOS&env=prod-lgi&version=2.3",
+									"host": [
+										"{{config}}"
+									],
+									"path": [
+										"config"
+									],
+									"query": [
+										{
+											"key": "country",
+											"value": "CH"
+										},
+										{
+											"key": "platform",
+											"value": "IOS"
+										},
+										{
+											"key": "platform",
+											"value": "ANDROID",
+											"disabled": true
+										},
+										{
+											"key": "env",
+											"value": "prod-lgi"
+										},
+										{
+											"key": "version",
+											"value": "2.3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "dashboard",
+					"item": [
+						{
+							"name": "eligibility",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/dashboard-service/dashboard/CH/eligibility?loginType=regular",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"dashboard-service",
+										"dashboard",
+										"CH",
+										"eligibility"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "usage",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/dashboard-service/dashboard/CH/usage?loginType=regular",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"dashboard-service",
+										"dashboard",
+										"CH",
+										"usage"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "communityWiFiStatus",
+					"item": [
+						{
+							"name": "GET Community WiFi",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/dashboard-service/dashboard/CH/communityWiFiStatus?scope=GET_ROAMING_STATUS&scope=WIFI_CREDENTIALS&scope=CHANGE_ROAMING_STATUS&scope=COMMUNITY_MAP",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"dashboard-service",
+										"dashboard",
+										"CH",
+										"communityWiFiStatus"
+									],
+									"query": [
+										{
+											"key": "scope",
+											"value": "GET_ROAMING_STATUS"
+										},
+										{
+											"key": "scope",
+											"value": "WIFI_CREDENTIALS"
+										},
+										{
+											"key": "scope",
+											"value": "CHANGE_ROAMING_STATUS"
+										},
+										{
+											"key": "scope",
+											"value": "COMMUNITY_MAP"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Comunity WiFi",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									},
+									{
+										"key": "",
+										"name": "Content-Type",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"action\":\"UPDATE_PASSWORD\", \"wifiPassword\":\"Adfa!2314!@d\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/dashboard-service/dashboard/CH/communityWiFiStatus?loginType=regular&scope=GET_ROAMING_STATUS&scope=CHANGE_ROAMING_STATUS&scope=WIFI_CREDENTIALS",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"dashboard-service",
+										"dashboard",
+										"CH",
+										"communityWiFiStatus"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										},
+										{
+											"key": "scope",
+											"value": "GET_ROAMING_STATUS"
+										},
+										{
+											"key": "scope",
+											"value": "CHANGE_ROAMING_STATUS"
+										},
+										{
+											"key": "scope",
+											"value": "WIFI_CREDENTIALS"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "usage",
+					"item": [
+						{
+							"name": "alllowance",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"msisdn\": \"0784011747\",\n\t\"type\": \"ROAMING\",\n\t\"productId\": \"1342848032\",\n\t\"value\": 25\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/dashboard-service/dashboard/CH/usage/allowance",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"dashboard-service",
+										"dashboard",
+										"CH",
+										"usage",
+										"allowance"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "device-management",
+					"item": [
+						{
+							"name": "GET Customer Devices API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f0f20f49-3c04-4ef2-bc1a-284ef5bcfc8c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"for (var i=0; i < jsonData.length; i++)\r",
+											"{\r",
+											"    if (jsonData[i].type == \"ModemGateway\")\r",
+											"    {\r",
+											"        postman.setEnvironmentVariable(\"modelName\", jsonData[i].modelName);\r",
+											"        postman.setEnvironmentVariable(\"lastModifiedDate\", jsonData[i].lastModifiedDate);\r",
+											"        postman.setEnvironmentVariable(\"deviceID\", jsonData[i].id);\r",
+											"    }\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/device-management-service/device-management/CH/device?loginType=regular&sdprqId=B08FA60C-53F8-4EA4-B401-CC868A9F31F3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"device-management-service",
+										"device-management",
+										"CH",
+										"device"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										},
+										{
+											"key": "sdprqId",
+											"value": "B08FA60C-53F8-4EA4-B401-CC868A9F31F3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Supported Features API",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/device-management-service/device-management/CH/supportedfeatures?loginType=regular&sdprqId=1234-1234-1234-1234&productClass={{modelName}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"device-management-service",
+										"device-management",
+										"CH",
+										"supportedfeatures"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										},
+										{
+											"key": "sdprqId",
+											"value": "1234-1234-1234-1234"
+										},
+										{
+											"key": "productClass",
+											"value": "{{modelName}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET Transaction Status API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c5c6b5c7-251e-4d0e-a109-4f437948e6ea",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"lastModifiedDate\", jsonData.data.lastModifiedDate);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/device-management-service/device-management/CH/device/ticket/status?ticketId={{ticketId}}&sdprqId=1234-1234-1234-1234",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"device-management-service",
+										"device-management",
+										"CH",
+										"device",
+										"ticket",
+										"status"
+									],
+									"query": [
+										{
+											"key": "ticketId",
+											"value": "{{ticketId}}"
+										},
+										{
+											"key": "sdprqId",
+											"value": "1234-1234-1234-1234"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Device API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8d695e28-253e-46d5-9b5e-73ea25cc3eb7",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"ticketId\", jsonData.data.ticketId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"data\": {\n        \"lastModifiedDate\": \"{{lastModifiedDate}}\",\n        \"deviceData\": {\n            \"wifi\": {\n                \"accessPoints\": [\n                    {\n                        \"wifiNetworkType\": \"HOME\",\n                        \"operatingFrequencyBand\": \"2.4\",\n                        \"enable\": true,\n                        \"ssidAdvertisementEnabled\": true,\n                        \"ssid\": \"PostmanTest\",\n                        \"status\": \"up\",\n                        \"security\": {\n                            \"keyPassphrase\": \"Test123456\",\n                            \"modeEnabled\": \"WPA-WPA2-Personal\"\n                        },\n                        \"wps\": {\n                            \"configMethodEnabled\": [\n                                \"pushbutton\"\n                            ]\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/device-management-service/device-management/CH/device?loginType=regular&productClass={{modelName}}&sdprqId=1234-1234-1234-1234&resourceIdentifier={{deviceID}}&resourceType=DEVICEID",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"device-management-service",
+										"device-management",
+										"CH",
+										"device"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										},
+										{
+											"key": "productClass",
+											"value": "{{modelName}}"
+										},
+										{
+											"key": "sdprqId",
+											"value": "1234-1234-1234-1234"
+										},
+										{
+											"key": "resourceIdentifier",
+											"value": "{{deviceID}}"
+										},
+										{
+											"key": "resourceType",
+											"value": "DEVICEID"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Device Details API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8d695e28-253e-46d5-9b5e-73ea25cc3eb7",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"ticketId\", jsonData.data.ticketId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"filters\": [\"deviceData.deviceInfo.\", \"deviceData.hosts.\", \"deviceData.wifi.accessPoints.\", \"deviceData.router.\", \"deviceData.uPnP.\", \"deviceData.firewall.\"]\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/device-management-service/device-management/CH/device/details?resourceIdentifier={{deviceID}}&resourceType=DEVICEID&sdprqId=1234-1234-1234-1234",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"device-management-service",
+										"device-management",
+										"CH",
+										"device",
+										"details"
+									],
+									"query": [
+										{
+											"key": "resourceIdentifier",
+											"value": "{{deviceID}}"
+										},
+										{
+											"key": "resourceType",
+											"value": "DEVICEID"
+										},
+										{
+											"key": "sdprqId",
+											"value": "1234-1234-1234-1234"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST Operation API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "02db68d6-cab1-44e1-a68d-4ffd91907b8a",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"ticketId\", jsonData.data.ticketId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"data\":\n\t{\n\t\t\"lastModifiedDate\": \"{{lastModifiedDate}}\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/device-management-service/device-management/CH/device/operation?loginType=regular&resourceIdentifier={{deviceID}}&resourceType=DEVICEID&action=REBOOT&productClass={{modelName}}&sdprqId=1234-1234-1234-1234",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"device-management-service",
+										"device-management",
+										"CH",
+										"device",
+										"operation"
+									],
+									"query": [
+										{
+											"key": "loginType",
+											"value": "regular"
+										},
+										{
+											"key": "resourceIdentifier",
+											"value": "{{deviceID}}"
+										},
+										{
+											"key": "resourceType",
+											"value": "DEVICEID"
+										},
+										{
+											"key": "action",
+											"value": "REBOOT"
+										},
+										{
+											"key": "productClass",
+											"value": "{{modelName}}"
+										},
+										{
+											"key": "sdprqId",
+											"value": "1234-1234-1234-1234"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2cb3de03-24af-48b4-a5bc-83a7dd157286",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "46edb046-ab0e-4b97-adab-8b4afb412730",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9bcc0f94-13bf-4023-9958-44f75675ca50",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "20a1f69b-0555-4122-8052-9801812407e3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

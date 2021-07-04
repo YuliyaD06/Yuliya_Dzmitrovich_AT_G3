@@ -1,0 +1,1391 @@
+{
+	"info": {
+		"_postman_id": "efac4f1b-8249-426d-b5d0-a472f836dd4a",
+		"name": "TOKEN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CH",
+			"item": [
+				{
+					"name": "1. ChTokenClient",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "source",
+									"value": "AEM",
+									"type": "text"
+								},
+								{
+									"key": "target",
+									"value": "IAM",
+									"type": "text"
+								},
+								{
+									"key": "userId",
+									"value": "{{userId}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/auth-handler/iam/authenticateuser",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"auth-handler",
+								"iam",
+								"authenticateuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. authorize",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a0722b6-baaa-45bc-8e08-7b7ed545ff72",
+								"exec": [
+									"var AuthCode = postman.getResponseHeader(\"location\");\r",
+									"var regex = /code=(.+\\w+)/;\r",
+									"var match = regex.exec(AuthCode);\r",
+									"pm.environment.set(\"code\", match[1]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/mga/sps/oauth/oauth20/authorize?response_type=code&client_id={{clientId}}&scope=country%3DDE+3rdparty%3DConnectApp&redirect_uri=http://localhost:8383/myupc&state=app_lang_de",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"mga",
+								"sps",
+								"oauth",
+								"oauth20",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "{{clientId}}"
+								},
+								{
+									"key": "scope",
+									"value": "country%3DDE+3rdparty%3DConnectApp"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8383/myupc"
+								},
+								{
+									"key": "state",
+									"value": "app_lang_de"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c09c963-6cf3-42c9-b1aa-ded449aff411",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{clientId}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{clientSecret}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "country=DE+3rdparty=ConnectApp",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8383/myupc",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "{{code}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/mga/sps/oauth/oauth20/token",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"mga",
+								"sps",
+								"oauth",
+								"oauth20",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e0530354-b133-4dcd-a33e-7f2667831807",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "24e50135-90c3-49e8-9202-f6f8e32eaabc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "AT",
+			"item": [
+				{
+					"name": "1. AtTokenClient",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "login-form-type",
+									"value": "pwd",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{login}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/pkmslogin.form",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"pkmslogin.form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. authorize",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a27bcaa7-77ef-423f-8c94-495bee907bec",
+								"exec": [
+									"var AuthCode = postman.getResponseHeader(\"location\");\r",
+									"var regex = /code=(.+\\w+)/;\r",
+									"var match = regex.exec(AuthCode);\r",
+									"pm.environment.set(\"code\", match[1]);\r",
+									"const jar = pm.cookies.jar();\r",
+									"jar.clear(pm.request.url, function (error) {\r",
+									"  // error - <Error>\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/mga/sps/oauth/oauth20/authorize?response_type=code&client_id={{clientId}}&scope=country%3DDE+3rdparty%3DConnectApp&redirect_uri=http://localhost:8383/myupc&state=app_lang_de",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"mga",
+								"sps",
+								"oauth",
+								"oauth20",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "{{clientId}}"
+								},
+								{
+									"key": "scope",
+									"value": "country%3DDE+3rdparty%3DConnectApp"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8383/myupc"
+								},
+								{
+									"key": "state",
+									"value": "app_lang_de"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c09c963-6cf3-42c9-b1aa-ded449aff411",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{clientId}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{clientSecret}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "country=DE+3rdparty=ConnectApp",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8383/myupc",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "{{code}}",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/mga/sps/oauth/oauth20/token",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"mga",
+								"sps",
+								"oauth",
+								"oauth20",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4ebd969d-f260-4ecb-8a82-685358606c4a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7828ed3-c690-413a-8b19-c152c9b0e9d0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "UK",
+			"item": [
+				{
+					"name": "MEDIA",
+					"item": [
+						{
+							"name": "1. UkTokenClient",
+							"protocolProfileBehavior": {
+								"followAuthorizationHeader": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\":\"{{mediaLogin}}\",\n\t\"credential\":\"{{mediaPassword}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/rest/v40/session/start/c-app?protocol=oidc",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"rest",
+										"v40",
+										"session",
+										"start",
+										"c-app"
+									],
+									"query": [
+										{
+											"key": "protocol",
+											"value": "oidc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. authorize",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b517c68c-8d43-4028-80e6-e13e667dd906",
+										"exec": [
+											"var AuthCode = postman.getResponseHeader(\"Location\");\r",
+											"var regex = /code=(.+?)&/g;\r",
+											"var match = regex.exec(AuthCode);\r",
+											"pm.environment.set(\"code\", match[1]);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain}}/oidc/authorize?locale=en&response_type=code&client_id=d31a6b0c-579f-4908-a875-ac3f4b4fabaf&redirect_uri=http://localhost:8383/capp&state=app_lang_en",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"oidc",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "locale",
+											"value": "en"
+										},
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "d31a6b0c-579f-4908-a875-ac3f4b4fabaf"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8383/capp"
+										},
+										{
+											"key": "state",
+											"value": "app_lang_en"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5c09c963-6cf3-42c9-b1aa-ded449aff411",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"token\", jsonData.access_token);\r",
+											"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);\r",
+											"postman.setEnvironmentVariable(\"loginType\", \"media\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [],
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{domain}}/oidc/token?grant_type={{grant_type}}&code={{code}}&client_id={{clientId}}&client_secret={{clientSecret}}&redirect_uri={{redirectUrl}}",
+									"host": [
+										"{{domain}}"
+									],
+									"path": [
+										"oidc",
+										"token"
+									],
+									"query": [
+										{
+											"key": "grant_type",
+											"value": "{{grant_type}}"
+										},
+										{
+											"key": "code",
+											"value": "{{code}}"
+										},
+										{
+											"key": "client_id",
+											"value": "{{clientId}}"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{clientSecret}}"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "{{redirectUrl}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "MOBILE",
+					"item": [
+						{
+							"name": "identify",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4d201c94-0638-48c1-a17f-8d48faed076f",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"key\", jsonData.key);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-UP-CALLING-LINE-ID",
+										"value": "{{login}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{wfsapiUrl}}/id/identify",
+									"host": [
+										"{{wfsapiUrl}}"
+									],
+									"path": [
+										"id",
+										"identify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "whoami",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "48b6ca3b-f4d4-4460-b3e3-96604dcb14cd",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"postman.setEnvironmentVariable(\"password\", jsonData.password);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "VMMD-activityName",
+										"value": "ManageCommunityWiFiCredentials",
+										"type": "text"
+									},
+									{
+										"key": "VMMD-senderURI",
+										"value": "WFS",
+										"type": "text"
+									},
+									{
+										"key": "VMMD-originatorURI",
+										"value": "CONNECTAPP",
+										"type": "text"
+									},
+									{
+										"key": "VMMD-userid",
+										"value": "CONNECTAPP",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{wfsapiUrl}}/id/whoami?key={{key}}",
+									"host": [
+										"{{wfsapiUrl}}"
+									],
+									"path": [
+										"id",
+										"whoami"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{key}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "{{login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "750d7b04aca1564d30a6dd2b694e943f734ede34b84cec8e33fbbba91935d490",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{mobile_clientId}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{mobile_clientSecret}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{authUrl}}/oidc/token",
+									"host": [
+										"{{authUrl}}"
+									],
+									"path": [
+										"oidc",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "NL",
+			"item": [
+				{
+					"name": "get token (SIT / UAT)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8d750929-257d-4882-bb92-335b64109150",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.id_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "cas_nl_auto_test",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "cas_nl_auto_test",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{login}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "capp ziggo session_upgrade openid offline_access",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{get_token_url}}",
+							"host": [
+								"{{get_token_url}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "https://www10.acc.vodafone.nl/sso/token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authoization",
+										"value": "Basic Q0FTX05MOnhzNGNhcHA=",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "3pproducts@spam4.me",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Oracle12@",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "capp ziggo session_upgrade openid offline_access",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://www10.acc.vodafone.nl/sso/token?",
+									"protocol": "https",
+									"host": [
+										"www10",
+										"acc",
+										"vodafone",
+										"nl"
+									],
+									"path": [
+										"sso",
+										"token"
+									],
+									"query": [
+										{
+											"key": "client_id",
+											"value": "CAS_NL",
+											"disabled": true
+										},
+										{
+											"key": "response_type",
+											"value": "code",
+											"disabled": true
+										},
+										{
+											"key": "scope",
+											"value": "openid%20ziggo%20capp%20offline_access%20session_upgrade",
+											"disabled": true
+										},
+										{
+											"key": "redirect_uri",
+											"value": "cap%3A%2F%2Flocalhost%3A8383",
+											"disabled": true
+										},
+										{
+											"key": "state",
+											"value": "2432234123123",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "200",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 23 Jul 2019 10:40:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "X-Hawaii-Tx-Id, X-Hawaii-Call-Ids"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "ctx_contact_id, Authorization, Content-Type, X-Requested-With, x-requested-with"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Hawaii-Tx-Id",
+									"value": "3d98cc77-2918-4111-a019-4a9c0d1d00ac"
+								},
+								{
+									"key": "X-Hawaii-Request-Id",
+									"value": "5ebaccdf-ee22-4598-9779-4aa10eda08cf"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, max-age=0"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "Tue, 23 Jul 2019 10:40:26 GMT"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding,Origin"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1154"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJraWQiOiJ2Zm5sLW9pZGMtc3RnIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiIzMTAwMDAwMDE3IiwiYXpwIjoiQ0FTX05MIiwic2NvcGUiOlsiY2FwcCIsIm9mZmxpbmVfYWNjZXNzIiwib3BlbmlkIiwic2Vzc2lvbl91cGdyYWRlIiwiemlnZ28iXSwiaXNzIjoiaHR0cHM6XC9cL3d3dzEwLmFjYy52b2RhZm9uZS5ubFwvc3NvXC8iLCJleHAiOjE1NjM4Nzk2MjYsImlhdCI6MTU2Mzg3ODQyNiwianRpIjoiODk2MGQyMmMtYmFmYS00MTIwLTk3YTctNGQwMjMwMjlmY2U4In0.LYoDek-te1eRnhwVz0aesdHsyLy5uz0CgsVNHzHnlAvUxZyhLeq_mzq8qkxHLE6EzFtcrl1GnUTP9WXuJ7Z9BEUvBMsbVvoByAMRhUXaAp7a6pqe9VjAmqwhaz4yuctXM-H8caZ2SEGZ4E1o7Nd9jpQOvRwhEEFQSAcD9VR6f7r4vysY8V5zEkqW_HH35kl_l0d0YXGfMMGJT_ry766ch9JleaWvOk9IDbOkw97bbfiV43htEUgMVp3PrXBFQOAU37wqiXqlcXhAjpCHUx0T7EaaYW_CH97Mm4tYVWLiFL0XmPxiwYYXbEV0AqC7013x5sRLxsGhZLmA9VizSreRig\",\n    \"token_type\": \"Bearer\",\n    \"refresh_token\": \"eyJhbGciOiJub25lIn0.eyJleHAiOjE1NjM4ODIwMjYsImp0aSI6IjY4NDYzNjA3LWY1Y2QtNDI1ZC04OGY4LTVlNDA0ZTU2YmZiYiJ9.\",\n    \"expires_in\": 1199,\n    \"scope\": \"capp ziggo session_upgrade openid offline_access\",\n    \"id_token\": \"eyJraWQiOiJ2Zm5sLW9pZGMtc3RnIiwiYWxnIjoiUlM1MTIifQ.eyJzdWIiOiIzMTAwMDAwMDE3IiwiYXVkIjoiQ0FTX05MIiwidXNlcl9pZCI6IjNwcHJvZHVjdHNAc3BhbTQubWUiLCJraWQiOiJ2Zm5sLW9pZGMtc3RnIiwiaXNzIjoiaHR0cHM6XC9cL3d3dzEwLmFjYy52b2RhZm9uZS5ubFwvc3NvXC8iLCJleHAiOjE1NjM4Nzk2MjYsImN1c3RvbWVyX2lkIjoiOTYxNjc0OSIsImxhc3RfbG9naW5fZGF0ZSI6ImZhbHNlIiwiaWF0IjoxNTYzODc4NDI2LCJqdGkiOiI2ZmZlMzBjNy0zMzVkLTQzODgtYjkwOC0zYjdhNjViYzZmYmQifQ.bC_mxdmTueRImcHqjAXrlV966UXcYVU1Q1o0QA5RTUmcgJzJ8RU2yWj4_rfj2kdx2eLE9KHudt2aDjf0xRlKuB6vBEtqFjoNBU05DxbRDq7Mya8x2j2xk4bQaFHgRzvwHPdGm2-JoaEZ5VjTSjzuGUhQ585tut-2jYiShr9dsr756rNxrTCPVBhhpo-Av6wG4Pj9HYmBJ7xaAupvtZD6rob8m42CDiHzTIfX0ZKL_yrysT-j-RR9nOW5_SUw72Kja8ZWVtGEUNshWjPFWEcXZlRZv_af4jKFpTqaoHyWvEHUNttsSFGW3yqj_vgmKQ3Rhycn_73nJJFVywKHaegk3A\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Authorization Grant Type refresh token (openID microservice)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20903b80-d5b7-49a7-b614-de9513c8fd37",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "{{grant_type_authorization}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}",
+									"description": "This is the redirect_uri configured in CIAM for the C-App OAuth/OpenID federation. C-App will submit this.",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "XB0Dje",
+									"description": "This is the code obtained by the C-App authorization with login and can be found in the redirect URL that did open the C-App.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{openID_url}}/openid/NL/token",
+							"host": [
+								"{{openID_url}}"
+							],
+							"path": [
+								"openid",
+								"NL",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refreshing the access token (openID microservice)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1998af11-e1b2-451f-ad68-7239fabeed86",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "{{grant_type_refreshing the access token}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{openID_url}}/openid/NL/token",
+							"host": [
+								"{{openID_url}}"
+							],
+							"path": [
+								"openid",
+								"NL",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f1c98d47-6c69-4f43-bc11-4922421c2acd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a1e65e8-c397-4aa2-8074-805d2e8e410a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "IE",
+			"item": [
+				{
+					"name": "1. IETokenClient",
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"{{login}}\",\n\t\"credential\":\"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/rest/v40/session/start/c-app?protocol=oidc",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"rest",
+								"v40",
+								"session",
+								"start",
+								"c-app"
+							],
+							"query": [
+								{
+									"key": "protocol",
+									"value": "oidc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. authorize",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b517c68c-8d43-4028-80e6-e13e667dd906",
+								"exec": [
+									"var AuthCode = postman.getResponseHeader(\"Location\");\r",
+									"var regex = /code=(.+?)&/g;\r",
+									"var match = regex.exec(AuthCode);\r",
+									"pm.environment.set(\"code\", match[1]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/oidc/authorize?locale=en&response_type=code&client_id={{clientId}}&redirect_uri=http://localhost:8383/capp&state=app_lang_en",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"oidc",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "locale",
+									"value": "en"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "{{clientId}}"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8383/capp"
+								},
+								{
+									"key": "state",
+									"value": "app_lang_en"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c09c963-6cf3-42c9-b1aa-ded449aff411",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.access_token);\r",
+									"postman.setEnvironmentVariable(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/oidc/token?grant_type={{grant_type}}&code={{code}}&client_id={{clientId}}&client_secret={{clientSecret}}&redirect_uri={{redirectUrl}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"oidc",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "{{grant_type}}"
+								},
+								{
+									"key": "code",
+									"value": "{{code}}"
+								},
+								{
+									"key": "client_id",
+									"value": "{{clientId}}"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{clientSecret}}"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirectUrl}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
