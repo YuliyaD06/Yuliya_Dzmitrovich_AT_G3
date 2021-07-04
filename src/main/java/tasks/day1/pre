@@ -1,0 +1,57 @@
+    static void foo2() {
+        int e;
+        for (int a=23; a<28 ; a++) {
+            if (a % 13 == 0){
+                System.out.println("continue!");
+                break;
+            }
+            e=1;
+            System.out.println("i is " + a);
+        }
+        System.out.println("numbre is " + e);
+    }
+
+AVERAGE FOR MASSIVE
+    VARIANT 2:
+    public static void foo4(){
+            int[] array = new int[10];
+            int sum = 0;
+            int avg;
+            Random random = new Random();
+            for (int l = 0; l < array.length ; l++){
+                array[l] = random.nextInt(100);
+            }
+            System.out.print("Initial array: ");
+            for (int m: array){
+                System.out.print(m + " ");
+            }
+            System.out.println ();
+            for (int k = 0; k < array.length; k++){
+                sum += k;
+            }
+            avg = sum / array.length;
+            System.out.println("Average value is: " + avg);
+        }
+
+    VARIANT 3:
+    public static void foo3(){
+                int[] array = new int[10];
+                int sum = 0;
+                int avg;
+                Random random = new Random();
+                for (int l = 0; l < array.length ; l++){
+                    array[l] = random.nextInt(100);
+                }
+                System.out.print("Initial array: ");
+                int count = 0;
+                for (int m: array){
+                    System.out.println("Element" + count++ + " is " + i);
+                    System.out.println("Element" + ++count + " is " + i);
+                }
+                System.out.println ();
+                for (int k: array){
+                    sum += k;
+                }
+                avg = sum / array.length;
+                System.out.println("Average value is: " + avg);
+            }

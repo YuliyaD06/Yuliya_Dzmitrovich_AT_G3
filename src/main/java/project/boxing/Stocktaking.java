@@ -9,7 +9,7 @@ public class Stocktaking {
 
     public void writeInfo(String objectInformation) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter(objectInformation));
-        //out.write(objectNames);
+        //out.write();
         out.close();
     }
 
