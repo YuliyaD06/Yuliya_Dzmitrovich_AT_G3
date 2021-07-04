@@ -18,31 +18,36 @@ public class ReturnIPList {
         String shortIpList = iPList.replaceAll(iPList.substring(0, 22), "");
         System.out.println(shortIpList);
 
-        String[] arraySplit = shortIpList.split("\\n");
-        String[][] arrayBig = new String[arraySplit.length][3];
-        int counterOk = 1;
-        int counterError = 1;
+        String[] splitShortIPList = shortIpList.split("\\n");
+        String[][] arrayBig = new String[splitShortIPList.length][3];
 
-        for (String i : arraySplit) {
-            String[] oneAccess = shortIpList.split("\\s");
+        //[0] = String "IP"
+        //[1] = String "granted as number"
+        //[2] = String "denied as number"
+
+
+        for (String splitIPandAccess : splitShortIPList) {
+            String[] oneAccess = splitIPandAccess.split("\\s");
 
                 for (int e = 0; e < arrayBig.length; e++ ) {
-                    if (arrayBig[e][Integer.parseInt(oneAccess[0])] == null) {
-                        arrayBig[e][Integer.parseInt(oneAccess[0])] = oneAccess[0];
-                    } else {
-                        if (arrayBig[e][Integer.parseInt(oneAccess[0])] == oneAccess[0]) {
-                            if (oneAccess[1].equals("granted")) {
-                                arrayBig[e][1] = Integer.toString(counterOk);
-                                counterOk++;
-                            } else {
-                                arrayBig[e][1] = Integer.toString(counterError);
-                                counterError++;
-                            }
-                        } else {
 
+                    if (arrayBig[e][0] == oneAccess[0]){
+                        if (oneAccess[1].equals("granted")) {
+                            ;
+                        } else {
+                            ;
+                        }
+
+                    } else {
+                        if (arrayBig[e][0] == null) {
+                            arrayBig[e][0] = oneAccess[0];
+                        }
                     }
-                }
+
+
             }
         }
+
+        //System.out.println("ip " + [0] + ": granted - " + [1] + ", denied -" + [2]);
     }
 }
