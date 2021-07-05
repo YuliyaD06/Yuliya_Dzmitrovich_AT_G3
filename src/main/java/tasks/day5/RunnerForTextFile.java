@@ -9,7 +9,7 @@ public class RunnerForTextFile {
         WorkWithTextFile textFile = new WorkWithTextFile();
 
         textFile.write(textFile.fileName);
-        textFile.readWords(textFile.fileName);
+        textFile.readWordsAndSymbols(textFile.fileName);
 
     }
 }

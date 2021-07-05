@@ -3,33 +3,49 @@ package main.java.tasks.day5;
 // заполнить их 10 произвольными целыми числами.
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class FoldersChain {
 
-    String fileName = "/pack1/pack2/pack3/pack4/TextFile1.txt";
-    // ?????
-
-    public void write(String fileName) throws IOException {
+    public void write(File fileName) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-        out.write(newNumbers());
+        out.write(String.valueOf(newNumbers()));
         out.close();
     }
 
-    public String newNumbers(){
+    public int[] newNumbers(){
         int[] randomNumbers = new int[10];
         Random random = new Random();
         for (int i = 0; i < randomNumbers.length; i++) {
-            System.out.println(randomNumbers[i] = random.nextInt(150));
+            System.out.print((randomNumbers[i] = random.nextInt(150)) + " ");
         }
-        return randomNumbers.toString();
+        return randomNumbers;
     }
 
     public static void main(String[] args) throws IOException {
-        FoldersChain chain = new FoldersChain();
-        chain.write(chain.fileName);
+
+        String file1 = "/Users/Yuliya_Dzmitrovich/IdeaProjects/Test_Project/src/main/java/pack1/pack2/pack3/pack4/TextFile1.txt";
+        String file2 = "/Users/Yuliya_Dzmitrovich/IdeaProjects/Test_Project/src/main/java/pack1/pack2/pack3/pack4/TextFile2.txt";
+
+        Path path = Paths.get("/Users/Yuliya_Dzmitrovich/IdeaProjects/Test_Project/src/main/java/pack1/pack2/pack3/pack4");
+
+        Files.createDirectories(path);
+
+        File newFile1 = new File(file1);
+        System.out.println("File 1: ");
+        new FoldersChain().write(newFile1);
+        System.out.println();
+        File newFile2 = new File(file2);
+        System.out.println("File 2: ");
+        new FoldersChain().write(newFile2);
+
+
     }
 
 }
