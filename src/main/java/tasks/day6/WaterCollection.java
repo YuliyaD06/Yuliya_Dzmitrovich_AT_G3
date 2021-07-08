@@ -9,9 +9,9 @@ import java.util.List;
 public class WaterCollection {
     public static void main(String[] args) {
 
-        Water11[] water = {new Water11("Прозрачная", "Нет"), new Water11("Прозрачная", "Нет"), new Water11("Мутная", "Аммиачная")};
-        List<Water11> waterList = Arrays.asList(water);
-        for (Water11 water11 : waterList){
+        WaterNew[] water = {new WaterNew("Прозрачная", "Нет"), new WaterNew("Прозрачная", "Нет"), new WaterNew("Мутная", "Аммиачная")};
+        List<WaterNew> waterList = Arrays.asList(water);
+        for (WaterNew water11 : waterList){
             System.out.println(water11.getColor() + "-" + water11.isSmell());
         }
     }
