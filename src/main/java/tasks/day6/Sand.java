@@ -9,6 +9,13 @@ public class Sand {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "The sand of " +
+                "weight = " + weight +
+                ", name is " + name;
+    }
+
     public int getWeight() {
         return weight;
     }
