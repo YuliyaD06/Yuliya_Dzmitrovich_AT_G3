@@ -12,18 +12,6 @@ import java.util.Locale;
 public class CurrentDate {
 
     public static void main(String[] args) {
-/*        System.out.println("Time now:");
-        LocalDate dateNow = LocalDate.now();
-        int day = dateNow.getDayOfMonth();
-        int year = dateNow.getYear();
-        String month = String.valueOf(dateNow.getMonth());
-        String monthInSmall = month.toLowerCase(Locale.ENGLISH);
-        LocalTime timeNow = LocalTime.now();
-        int hour = timeNow.getHour();
-        int minutes = timeNow.getMinute();
-        String date = day + " " + monthInSmall + ", " + year + ", ";
-        String time = hour + " hours " + minutes + " minutes";
-        System.out.println(date+time);*/
 
         System.out.println("Time now:");
         Date date = new Date();
