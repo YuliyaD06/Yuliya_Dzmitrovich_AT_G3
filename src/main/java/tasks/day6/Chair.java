@@ -24,4 +24,11 @@ public class Chair {
     public void setWidth(int width) {
         this.width = width;
     }
+
+    @Override
+    public String toString() {
+        return "The characteristics of chair are: " +
+                "height = " + height +
+                ", width = " + width;
+    }
 }
