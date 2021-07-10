@@ -1,10 +1,9 @@
-package main.java.tasks.day5;
+package main.java.tasks.generics;
 // - Написать метод, который выводит следующий месяц от
 // заданного во входном параметре. Входной параметр ввести с клавиатуры
 
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class NextMonth {

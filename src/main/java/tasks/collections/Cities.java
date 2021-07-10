@@ -1,4 +1,4 @@
-package main.java.tasks.day6;
+package main.java.tasks.collections;
 //Создать пустой список cities
 //Добавить в список 3 города (Минск, Москва, Берлин)
 //Проитерировать список через for-each и отпечатать слова в консоль с новой строки

@@ -1,4 +1,4 @@
-package main.java.tasks.day5;
+package main.java.tasks.generics;
 //- Вывести список файлов и папок выбранного места на диске.
 
 import java.io.File;

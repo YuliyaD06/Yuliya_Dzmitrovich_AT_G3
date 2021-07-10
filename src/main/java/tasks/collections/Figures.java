@@ -1,4 +1,4 @@
-package main.java.tasks.day6;
+package main.java.tasks.collections;
 //Создать список строк figures из 5 фигур (Овал, Прямоугольник, Круг, Квадрат, Эллипс) через (Arrays.asList())
 //Проитерировать список через for-each и отпечатать слова в в файл figures через тире
 //Посчитать сколько фигур НЕ содержат букву "и" и вывести число в консоль
@@ -6,8 +6,6 @@ package main.java.tasks.day6;
 //Вставить на 3 позицию Треугольник
 //Проитерировать список через for-each и отпечатать слова в консоль через пробел
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.java.tasks.day6;
+package main.java.tasks.collections;
 
 public class Sand {
     private int weight;

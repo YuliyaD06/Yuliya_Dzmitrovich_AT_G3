@@ -1,4 +1,4 @@
-package main.java.tasks.day6;
+package main.java.tasks.collections;
 //Создать пустой список noodles
 //Добавить в список 4 вида макарон (Hakka, Ramen, Hibachi, Schezwan)
 //Проитерировать список через for-each и отпечатать слова в консоль через тире

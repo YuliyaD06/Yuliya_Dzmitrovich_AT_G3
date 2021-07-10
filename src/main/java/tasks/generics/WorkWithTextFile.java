@@ -1,10 +1,9 @@
-package main.java.tasks.day5;
+package main.java.tasks.generics;
 
 //- Прочитать текстовый файл, подсчитать в тексте количество знаков препинания и слов и вывести результат в консоль.
 // "?!:;,."
 
 import java.io.*;
-import java.util.Arrays;
 
 public class WorkWithTextFile {
 
