@@ -1,4 +1,4 @@
-package main.java.tasks.day5;
+package main.java.tasks.generics;
 
 import java.io.IOException;
 

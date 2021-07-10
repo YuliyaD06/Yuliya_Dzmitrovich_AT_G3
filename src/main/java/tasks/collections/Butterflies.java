@@ -1,4 +1,4 @@
-package main.java.tasks.day6;
+package main.java.tasks.collections;
 //Создать пустой список butterflies (через нью)
 //Добавить в список 4 бабочек (Common blue, Swallowtail, Aglais io, Common blue)
 //Проитерировать список через for-each и отпечатать слова в консоль в кавычках

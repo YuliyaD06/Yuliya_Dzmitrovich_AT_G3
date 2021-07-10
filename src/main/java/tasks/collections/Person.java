@@ -1,6 +1,4 @@
-package main.java.tasks.day6;
-
-import java.util.Objects;
+package main.java.tasks.collections;
 
 public class Person {
     private String name;

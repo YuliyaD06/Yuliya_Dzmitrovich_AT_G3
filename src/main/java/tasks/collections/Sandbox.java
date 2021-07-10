@@ -1,4 +1,4 @@
-package main.java.tasks.day6;
+package main.java.tasks.collections;
 
 import java.util.ArrayList;
 import java.util.HashMap;
