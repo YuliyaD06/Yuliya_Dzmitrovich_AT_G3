@@ -17,8 +17,6 @@ public abstract class Water implements Transformable{
         this.temperature = temperature;
     }
 
-    public abstract void cramp(Bubble[] bubbles);
-
     public String getColor() {
         return color;
     }
