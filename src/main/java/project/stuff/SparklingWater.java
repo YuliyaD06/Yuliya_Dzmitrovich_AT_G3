@@ -10,9 +10,12 @@ package main.java.project.stuff;
 //++ есть приватный метод degas(), который каждую секунду выпускает по партии пузырьков из рассчета 10 + 5 * температура_воды
 //++ есть публичный метод boolean isSparkle(), возвращающий true если в воде еще есть пузырьки газа
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class SparklingWater extends Water {
     private boolean isOpened;
-    private Bubble[] bubbles;
+    List<Bubble> bubbles = new LinkedList<Bubble>();
     private boolean isSparkle;
 
 
@@ -20,32 +23,29 @@ public class SparklingWater extends Water {
         isOpened();
     }
 
-    @Override
-    public void cramp(Bubble[] bubbles) {
 
-    }
-
-
-    public void pump(Bubble[] bubbles) {
+    public void pump(List<Bubble> bubbles) {
         this.bubbles = bubbles;
-        int i;
-        for (i = 0; i < bubbles.length; i++) {
-            Bubble bubble = new Bubble("gas");
-            bubble = bubbles[i];
+
+        for (int bubble = 0; bubble < bubbles.size(); bubble++) {
+            //bubbles.get(bubble);
+            bubbles.add(new Bubble("gas"));
+            /*Bubble bubble = new Bubble("gas");
+            bubble = bubbles[i];*/
         }
-        System.out.printf("There are " + i + " bubbles in the bottle.").println();
+        System.out.printf("There are " + bubbles.size() + " bubbles in the bottle.").println();
     }
 
     public void degas(int temperature) {
-        int numberOfBubbles = bubbles.length;
+        int numberOfBubbles = bubbles.size();
         int speed = 10 + 5 * temperature;
 
         int time = numberOfBubbles / speed;
         System.out.printf("Starting degas process...").println();
 
-        for (int i = 0; i < bubbles.length - 1; i++) {
-            bubbles[i].cramp();
-            bubbles[i] = null;
+        for (Bubble bubble : bubbles) {
+            Bubble.cramp();
+            bubble = null;
         }
         System.out.println();
         System.out.printf("Degassing is finished.").println();

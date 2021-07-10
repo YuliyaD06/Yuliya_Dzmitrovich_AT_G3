@@ -5,33 +5,26 @@ package main.java.project.boxing;
 //- Создать класс Stocktaking, который записывает информация о этих VesselBox обьектах в файл (отдельный файл для каждого ящика).
 //- Прочитать файл полученный в предыдущем пункте, получить обьекты VesselBox и вывести в консоль тип хранимых данных и их количество.
 
-public class GenericVesselBox<T extends Vessel>  {
+public class GenericVesselBox<T extends Vessel> {
 
-    public T[] smallBox = (T[]) new Object[9];
-    public T[] mediumBox = (T[]) new Object[25];
-    public T[] largeBox = (T[]) new Object[36];
+    private int size;
 
-    public T[] getSmallBox() {
-        return smallBox;
+    public GenericVesselBox(int size) {
+        this.size = size;
+        if (size == 9){
+            T[] smallBox = (T[]) new Vessel[9];
+        } else if (size == 25){
+            T[] mediumBox = (T[]) new Vessel[25];
+        } else {
+            T[] largeBox = (T[]) new Vessel[36];
+        }
     }
 
-    public void setSmallBox(T[] smallBox) {
-        this.smallBox = smallBox;
+    public int getSize() {
+        return size;
     }
 
-    public T[] getMediumBox() {
-        return mediumBox;
-    }
-
-    public void setMediumBox(T[] mediumBox) {
-        this.mediumBox = mediumBox;
-    }
-
-    public T[] getLargeBox() {
-        return largeBox;
-    }
-
-    public void setLargeBox(T[] largeBox) {
-        this.largeBox = largeBox;
+    public void setSize(int size) {
+        this.size = size;
     }
 }

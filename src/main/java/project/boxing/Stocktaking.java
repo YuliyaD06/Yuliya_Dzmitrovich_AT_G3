@@ -7,17 +7,19 @@ import java.io.*;
 
 public class Stocktaking {
 
-    public void writeInfo(String objectInformation) throws IOException {
-        BufferedWriter out = new BufferedWriter(new FileWriter(objectInformation));
+
+    public void writeInfo(String objectNameBottle) throws IOException {
+        BufferedWriter out = new BufferedWriter(new FileWriter(objectNameBottle));
         //out.write();
         out.close();
     }
 
-    public void readInfo(String objectInformation) throws IOException {
-        BufferedReader in = new BufferedReader(new FileReader(objectInformation));
-        String objectNames;
+    public void readInfo(String objectNameBottle) throws IOException {
+        BufferedReader in = new BufferedReader(new FileReader(objectNameBottle));
+        String nameBottleBox;
+        String nameCupBox;
 
-        while ((objectNames = in.readLine()) != null) {
+        while ((nameBottleBox = in.readLine()) != null) {
 
         }
     }
