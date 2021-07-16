@@ -1,4 +1,4 @@
-package main.java.tasks.day2;
+package main.java.tasks.arrays;
 // используя while вывести в консоль все числа от 0 до 20 в 1 строку через пробел
 public class TaskWhile {
 

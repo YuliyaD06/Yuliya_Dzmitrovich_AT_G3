@@ -1,8 +1,7 @@
-package main.java.tasks.day2;
+package main.java.tasks.arrays;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 // используя for вывести в консоль каждое нечетное число от 3 до 19 включительно
 public class TaskFor {

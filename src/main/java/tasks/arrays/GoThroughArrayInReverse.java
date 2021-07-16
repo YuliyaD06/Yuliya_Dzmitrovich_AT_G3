@@ -1,4 +1,4 @@
-package main.java.tasks.day2;
+package main.java.tasks.arrays;
 import java.util.Random;
 // вывести в консоль все элементы массива в обратном порядке
 

@@ -1,11 +1,9 @@
-package main.java.tasks.day2;
+package main.java.tasks.arrays;
 // поменять местами первый и последний элементы и вывести результат в консоль
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class ChangeElements {
 
@@ -31,6 +29,6 @@ public class ChangeElements {
     public static void main(String[] args) {
         List<Integer> elementsList = Arrays.asList(3, 5, 9, 7);
         System.out.println("Первый элемент " + elementsList.stream().findFirst().get());
-        System.out.println("последний элемент " + elementsList);
+        System.out.println("последний элемент " + elementsList.stream().sorted((x, y) -> -x.compareTo(y)));
     }
 }
