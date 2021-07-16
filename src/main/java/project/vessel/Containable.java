@@ -1,4 +1,4 @@
-package main.java.project.boxing;
+package main.java.project.vessel;
 /*- interface Containable (implementing classes Bottle, Cup, Can)
         -- void addStuff (Transformable stuff) - adds some stuff (e.g. water, sand) to Containable object
          -- Transformable removeStuff() - removes all stuff away

@@ -1,4 +1,4 @@
-package main.java.project.boxing;
+package main.java.project.vessel;
 // Bottle:
 //++ содеждит приватные поля double volume, SparklingWater water
 //++ есть публичный метод void open(), который меняет состояние воды в "открытое" (приблизительно, как this.water.setOpened(true);)
@@ -11,12 +11,14 @@ import main.java.project.stuff.SparklingWater;
 import main.java.project.stuff.Transformable;
 import main.java.project.material.Material;
 import main.java.project.material.Plastic;
-import main.java.project.vessel.Containable;
-import main.java.project.vessel.Vessel;
+
 
 import java.util.Arrays;
 import java.util.List;
 
+//---- diameter - default for Bottle - 2.0, Cup - 8.0, Can - 10.0
+//---- volume - is passed from child constructor
+//---- material - is passed from child constructor
 
 public class Bottle extends Vessel implements Containable {
 
@@ -26,7 +28,7 @@ public class Bottle extends Vessel implements Containable {
 
     public Bottle(double volume, double diameter, int weight, Material materialBottle) {
         super (volume, diameter, weight, materialBottle);
-
+        setDiameter(2.0);
         Plastic plasticBottle = (Plastic) materialBottle;
         plasticBottle.getThermalConductivity();
         plasticBottle.getColor();
