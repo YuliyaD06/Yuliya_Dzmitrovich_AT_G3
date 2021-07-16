@@ -1,6 +1,6 @@
-package main.java.project.actions;
+package main.java.project.runner;
 
-import main.java.project.boxing.Bottle;
+import main.java.project.vessel.Bottle;
 import main.java.project.material.Plastic;
 
 public class Runner {
@@ -10,7 +10,7 @@ public class Runner {
 
         Bottle theBottle = new Bottle(1.5, 10, 1700, plastic);
         theBottle.open();
-        System.out.println();
+        /*System.out.println();
         System.out.println();
 
         Bottle theBottle1 = new Bottle(1, 7, 1200, plastic);
@@ -19,7 +19,7 @@ public class Runner {
         System.out.println();
 
         Bottle theBottle2 = new Bottle(0.5, 5, 700, plastic);
-        theBottle2.open();
+        theBottle2.open();*/
 
     }
 }

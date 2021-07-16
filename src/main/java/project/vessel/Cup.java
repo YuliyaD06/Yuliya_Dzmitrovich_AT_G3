@@ -1,4 +1,4 @@
-package main.java.project.boxing;
+package main.java.project.vessel;
 
 import main.java.project.stuff.Transformable;
 import main.java.project.material.Material;
@@ -9,6 +9,7 @@ public class Cup extends Vessel implements Containable {
 
     public Cup(double volume, double diameter, int weight, Material materialCup){
         super (volume, diameter, weight, materialCup);
+        setDiameter(8.0);
         materialCup.getThermalConductivity();
         materialCup.getColor();
         materialCup.getDensity();

@@ -1,10 +1,12 @@
-package main.java.project.boxing;
-// - each Vessel has:
-// -- private double volume;
-// -- private double diameter;
-// -- private int weight;
-// -- private Material material;
-// -- all field are set in costructor
+package main.java.project.vessel;
+//---- private double volume;
+//---- private double diameter;
+//---- private int weight;
+//---- private Material material;
+//---- volume, diameter, material are passed from
+//  ?????? child constructor
+//---- weight is set in constructor as density * volume / 4
+//---- all fields have getters and setters
 
 import main.java.project.material.Material;
 
@@ -14,11 +16,14 @@ public abstract class Vessel {
     private int weight;
     private Material material;
 
-    public Vessel(double volume, double diameter, int weight, Material material) {
-        this.volume = volume;
-        this.diameter = diameter;
-        this.weight = weight;
-        this.material = material;
+    public Vessel() {
+        //in constructor?
+        
+        //this.volume = volume;
+        //this.diameter = diameter;
+        //this.weight = weight;
+        //this.material = material;
+
         this.material.getThermalConductivity();
         this.material.getColor();
         this.material.getDensity();

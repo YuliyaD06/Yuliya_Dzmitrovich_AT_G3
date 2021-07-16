@@ -3,14 +3,16 @@ package main.java.project.stuff;
 ++ содеждит приватные поля double volume = 03, String gas;
 ++ содержит конструктор Bubble(String gas), в который передается строка с названием газа пузырька
 ++ есть публичный метод void cramp(), который в консоль выводит слово "Cramp!"
-++ есть публичный метод double getVolume(), возвращающий обьем пузырька*/
+++ есть публичный метод double getVolume(), возвращающий обьем пузырька
+-- public static final double VOLUME = 03
+-- public void cramp(), который в консоль выводит слово "Cramp!"*/
 
 public class Bubble {
-    private double volume;
+    private static final double VOLUME = 0.3;
     private String gas;
 
     public Bubble(String gas){
-        this.volume = 0.3;
+        getVolume();
         this.gas = gas;
     }
 
@@ -19,7 +21,7 @@ public class Bubble {
     }
 
     public double getVolume() {
-        return volume;
+        return VOLUME;
     }
 
     public String getGas() {

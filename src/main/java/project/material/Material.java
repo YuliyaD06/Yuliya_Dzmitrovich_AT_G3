@@ -1,4 +1,4 @@
-package main.java.project.type;
+package main.java.project.material;
 public abstract class Material {
 
     private double thermalConductivity;

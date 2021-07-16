@@ -1,4 +1,4 @@
-package main.java.project.type;
+package main.java.project.material;
 //-- Glass (thermalConductivity - 0.017, color - green, density - 2200)
 public class Glass extends Material {
 
