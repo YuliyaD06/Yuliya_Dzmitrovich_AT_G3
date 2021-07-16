@@ -1,10 +1,7 @@
-package main.java.tasks.day4;
+package main.java.tasks.dates;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
-import java.util.Locale;
 
 // написать метод, который выводит в консоль текущую дату и время в формате:
 //Сейчас на дворе:
