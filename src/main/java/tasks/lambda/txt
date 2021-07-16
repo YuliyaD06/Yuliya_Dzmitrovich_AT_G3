@@ -1,0 +1,13 @@
+да, например:
+Stream.generate(() -> "bugaga").limit(10).collect(Collectors.toList()).forEach(System.out::println);
+- сгеренит коллекцию из 10 одинаковых стрингов
+
+если нужно нечто наподобие итерации с приращением/изменением, то нужно делать кастыль,
+или мэпить во что-то другое предыдущий стрим, например:
+Stream.generate(() -> "bugaga").limit(10).map(s->s+"bla-bla").collect(Collectors.toList())
+.forEach(System.out::println); - 'этот видоизменит каждую строку созданную изначально
+
+или, например, делать специализированный интстрим, который поддерживает понятие диапазона:
+IntStream.rangeClosed(1, 10).boxed().map(i -> new Bottle("name " + i)).collect(Collectors.toList())
+\.forEach(System.out::println); - тут создадим 10 новых бутылок с уникальными именами
+*метод boxed() - специфическая штука, которая примитивные инты автоматом упакует в обьект Integer
