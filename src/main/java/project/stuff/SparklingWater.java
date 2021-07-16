@@ -8,7 +8,12 @@ package main.java.project.stuff;
 //++есть приватный метод void isOpened(), который в новом потоке проверят состояние воды на "открытость" и в случае,
 // если она открыта запускает метод degas()
 //++ есть приватный метод degas(), который каждую секунду выпускает по партии пузырьков из рассчета 10 + 5 * температура_воды
-//++ есть публичный метод boolean isSparkle(), возвращающий true если в воде еще есть пузырьки газа
+
+//----??? есть публичный метод boolean isSparkle(), возвращающий true если в воде еще есть пузырьки газа
+//----??? public SparklingWater(), конструктор, который сетает нужное количество пузырьков из рассчета, что 1 литр воды содержит 10 тыс пузырьков и вызывает внутренний метод isOpened();
+//----??? private isOpened(), который раз в 2 секунды (используем Thread.sleep()) проверяет, состояние закрытости в
+// бутылке и если бутылка открылась, то запускает внутренний метод degas()
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,21 +22,21 @@ public class SparklingWater extends Water {
     private boolean isOpened;
     List<Bubble> bubbles = new LinkedList<Bubble>();
     private boolean isSparkle;
+    //private double volume;
 
 
     public SparklingWater() {
         isOpened();
-    }
+        //Bubble[] bubbles = new Bubble[(int)(10000 * volume)];
 
+        //List<Bubble> bubblesList = Arrays.asList(bubbles);
+    }
 
     public void pump(List<Bubble> bubbles) {
         this.bubbles = bubbles;
 
-        for (int bubble = 0; bubble < bubbles.size(); bubble++) {
-            //bubbles.get(bubble);
-            bubbles.add(new Bubble("gas"));
-            /*Bubble bubble = new Bubble("gas");
-            bubble = bubbles[i];*/
+        for (int bubblePlace = 0; bubblePlace < bubbles.size(); bubblePlace++) {
+            bubbles.set(bubblePlace, new Bubble("gas"));
         }
         System.out.printf("There are " + bubbles.size() + " bubbles in the bottle.").println();
     }
@@ -40,8 +45,9 @@ public class SparklingWater extends Water {
         int numberOfBubbles = bubbles.size();
         int speed = 10 + 5 * temperature;
 
-        int time = numberOfBubbles / speed;
-        System.out.printf("Starting degas process...").println();
+        int timeInSec = numberOfBubbles / speed;
+
+        System.out.printf("Starting degas process... It will taken " + timeInSec).println();
 
         for (Bubble bubble : bubbles) {
             Bubble.cramp();
@@ -52,9 +58,18 @@ public class SparklingWater extends Water {
     }
 
     private void isOpened() {
-        if (this.isOpened) {
-            degas(getTemperature());
-        }
+        Runnable open = () -> {
+            try {
+                int secToWait = 1000 * 2;
+                Thread.currentThread().sleep(secToWait);
+                System.out.println("Check the \"opened\" state...");
+                if (this.isOpened){
+                    degas(getTemperature());
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
     }
 
     public void setOpened(boolean opened) {
@@ -63,8 +78,8 @@ public class SparklingWater extends Water {
     }
 
     public boolean isSparkle() {
-        if (bubbles != null) {
-
+        if (bubbles == null) {
+            isSparkle = true;
         }
         return isSparkle;
     }
