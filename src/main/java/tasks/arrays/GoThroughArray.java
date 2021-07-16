@@ -1,4 +1,4 @@
-package main.java.tasks.day2;
+package main.java.tasks.arrays;
 
 import java.util.Random;
 import java.util.stream.Stream;

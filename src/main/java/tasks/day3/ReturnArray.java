@@ -3,6 +3,7 @@ package main.java.tasks.day3;
 
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class ReturnArray {
     LocalDate today = LocalDate.now();
@@ -28,5 +29,11 @@ public class ReturnArray {
         if (sum == 0) {
             System.out.println("Элементы, кратные номеру текущего месяца, отсутствуют.");
         }
+    }
+
+    public static void main(String[] args) {
+
+        Stream.generate(() -> (int)(Math.random() * 30)).limit(15).filter(num -> num % LocalDate.now().getMonthValue() == 0)
+                .forEach(System.out::println);
     }
 }

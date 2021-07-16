@@ -1,4 +1,4 @@
-package main.java.tasks.day4;
+package main.java.tasks.dates;
 
 import java.text.DateFormat;
 import java.text.ParseException;

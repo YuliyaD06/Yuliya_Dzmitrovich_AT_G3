@@ -1,4 +1,4 @@
-package main.java.tasks.day4;
+package main.java.tasks.dates;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +20,7 @@ public class NumbersIntoArray {
                 System.out.println();
             }
         }*/
+        System.out.println();
         System.out.print("Using stream: ");
         textList.stream().forEach(System.out::println);
 

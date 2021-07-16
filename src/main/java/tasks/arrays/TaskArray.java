@@ -1,4 +1,4 @@
-package main.java.tasks.day2;
+package main.java.tasks.arrays;
 import java.util.Random;
 import java.util.stream.Stream;
 // создать пустой массив типа int и размера n = 7 и заполнить его случайными элементами используя Random.nextInt(n)

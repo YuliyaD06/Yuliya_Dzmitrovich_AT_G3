@@ -3,6 +3,8 @@
 этого метода, элементы в результирующем массиве должны быть расположены в обратном порядке*/
 package main.java.tasks.day3;
 import java.util.Random;
+import java.util.stream.Stream;
+
 public class ReturnIntArray {
     public void intArray(int n) {
         int[] arrayInt = new int[5];
@@ -28,5 +30,11 @@ public class ReturnIntArray {
         for (int i = fine.length - 1; i >= 0; i--) {
             System.out.println(fine[i]);
         }
+    }
+
+    public static void main(String[] args) {
+        int i = 5;
+        Stream.generate(() -> (int)(Math.random() * 20)).limit(10).filter(num -> num > i)
+                .sorted((int1, int2) -> -int1.compareTo(int2)).forEach(System.out::println);
     }
 }

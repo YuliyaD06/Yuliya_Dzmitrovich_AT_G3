@@ -1,9 +1,7 @@
-package main.java.tasks.day4;
+package main.java.tasks.dates;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 //найти и вывести в консоль все дубликаты слов в строке текста
 public class Duplicates {

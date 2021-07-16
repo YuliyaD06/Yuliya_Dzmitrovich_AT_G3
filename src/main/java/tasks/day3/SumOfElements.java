@@ -3,6 +3,7 @@ package main.java.tasks.day3;
 n-ого элемента в целочисленном массиве, где n - целое число, передаваемое в сигнатуру этого метода*/
 
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class SumOfElements {
     public void sum(int n) {
@@ -32,6 +33,10 @@ public class SumOfElements {
             sum += last[i];
         }
         System.out.println("Сумма каждого n-го элемента в массиве = " + sum);
+    }
+
+    public static void main(String[] args) {
+        //Stream.generate(() -> (int)(Math.random()) * 30).limit(10).
     }
 
 }

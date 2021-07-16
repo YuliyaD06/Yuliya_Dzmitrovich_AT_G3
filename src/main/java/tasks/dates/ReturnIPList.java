@@ -1,4 +1,4 @@
-package main.java.tasks.day4;
+package main.java.tasks.dates;
 /*имеется текст лога в виде:
         access_log.2020.09.07 212.168.101.5 granted
         access_log.2020.09.07 212.168.101.6 denied
