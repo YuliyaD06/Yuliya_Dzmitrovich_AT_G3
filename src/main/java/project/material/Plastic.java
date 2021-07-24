@@ -1,17 +1,12 @@
 package main.java.project.material;
-//-- Plastic (thermalConductivity - 0.2, color - white, density - 1800)
+//++ Plastic (thermalConductivity - 0.2, color - white, density - 1800)
 public class Plastic extends Material {
 
 
-    public Plastic(double thermalConductivity, String color, double density){
+    public Plastic(){
 
-        super (thermalConductivity, color, density);
-        this.setThermalConductivity(0.2);
-        this.setColor("White");
-        this.setDensity(1800);
-        this.getColor();
-        this.getDensity();
-        this.getThermalConductivity();
+        super (0.2, "White", 1800);
+
     }
 
 }
