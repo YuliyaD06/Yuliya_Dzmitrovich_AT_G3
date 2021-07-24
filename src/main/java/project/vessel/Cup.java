@@ -7,12 +7,8 @@ import main.java.project.vessel.Vessel;
 
 public class Cup extends Vessel implements Containable {
 
-    public Cup(double volume, double diameter, int weight, Material materialCup){
-        super (volume, diameter, weight, materialCup);
-        setDiameter(8.0);
-        materialCup.getThermalConductivity();
-        materialCup.getColor();
-        materialCup.getDensity();
+    public Cup(double volume, Material materialCup){
+        super (8.0);
     }
 
     @Override

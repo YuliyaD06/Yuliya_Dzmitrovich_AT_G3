@@ -3,6 +3,8 @@ package main.java.project.stuff;
 ---- void setTemperature(int temperature) - mixes particles of stuff against each other*/
 public interface Transformable {
 
+    //void setOpened();
+    //void setTemperature(int temperature);
     void mix();
 
 }

@@ -2,26 +2,43 @@ package main.java.project.warehouse;
 
 import main.java.project.vessel.Vessel;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //- Создать 2 объекта класса VesselBox с бутылками и кружками в классе Warehouse и вывести на экран имена хранимых обьектов.
+//---- private Map<Integer, VesselBox> stock, которая является хранилищем ящиков
+//---- public void addBox(VesselBox box) - для добавления ящиков в хранилище
+//---- VesselBox getBox() - для получения содержимого ящиков
+//---- void removeBox() - для удаления ящиков
+//---- при добавлении/удалении ящиков Stocktaking обновляет информацию о состоянии склада
+
 public class Warehouse {
 
-    VesselBox<Vessel> box1 = new VesselBox<>(25);
-    VesselBox<Vessel> box2 = new VesselBox<>(9);
+    private Map<Integer, VesselBox> stock = new HashMap<>();
+    private int stockSize;
 
-    String nameBox1;
-    String nameBox2;
+    public void addBox(VesselBox box){
 
-    public void objectNameBottle(String nameBox1){
-        this.nameBox1 = nameBox1;
-        System.out.println("The stored object name is " + nameBox1 + ". The size of box = ");
+        box = new VesselBox(box.getName(), box.getBox());
+
+        if (stockSize < stock.size()) {
+            for (int i = 0; i < stock.size(); i++){
+                stock.put(i, box); // ????????
+                stockSize++;
+            }
+        }
+
     }
-    public void objectNameCup(String nameBox2){
-        this.nameBox2 = nameBox2;
-        System.out.println("The stored object name is " + nameBox2 + ". The size of box = ");
+
+/*    VesselBox getBox(){
+
+    }*/
+
+    public void removeBox(){
+        if (stockSize > 0) {
+            stock.remove(1);
+            stockSize--;
+        }
     }
-
-
-    //void getINFOO
-
 
 }
