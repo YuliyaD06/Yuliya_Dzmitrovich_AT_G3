@@ -1,6 +1,8 @@
 package main.java.tasks.dates;
 
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Date;
 
 // написать метод, который выводит в консоль текущую дату и время в формате:

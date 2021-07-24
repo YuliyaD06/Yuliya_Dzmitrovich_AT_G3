@@ -16,17 +16,10 @@ public abstract class Vessel {
     private int weight;
     private Material material;
 
-    public Vessel() {
-        //in constructor?
-        
-        //this.volume = volume;
-        //this.diameter = diameter;
-        //this.weight = weight;
-        //this.material = material;
+    public Vessel(double diameter) {
 
-        this.material.getThermalConductivity();
-        this.material.getColor();
-        this.material.getDensity();
+        this.diameter = diameter;
+
     }
 
 

@@ -6,19 +6,11 @@ package main.java.project.vessel;
 //++ есть публичный метод SparklingWater getWater() возвращающий обьект воды
 //++ есть публичный метод setWater(SparklingWater water) добавляющий новый обьект воды
 
-import main.java.project.stuff.Bubble;
 import main.java.project.stuff.SparklingWater;
 import main.java.project.stuff.Transformable;
 import main.java.project.material.Material;
-import main.java.project.material.Plastic;
-
-
 import java.util.Arrays;
 import java.util.List;
-
-//---- diameter - default for Bottle - 2.0, Cup - 8.0, Can - 10.0
-//---- volume - is passed from child constructor
-//---- material - is passed from child constructor
 
 public class Bottle extends Vessel implements Containable {
 
@@ -26,29 +18,16 @@ public class Bottle extends Vessel implements Containable {
     private SparklingWater water = new SparklingWater();
     boolean opened;
 
-    public Bottle(double volume, double diameter, int weight, Material materialBottle) {
-        super (volume, diameter, weight, materialBottle);
-        setDiameter(2.0);
-        Plastic plasticBottle = (Plastic) materialBottle;
-        plasticBottle.getThermalConductivity();
-        plasticBottle.getColor();
-        plasticBottle.getDensity();
-
-        System.out.printf("The plastic bottle of "+ volume + " volume is created.").println();
-
-        Bubble[] bubbles = new Bubble[(int)(10000 * volume)];
-
-        List<Bubble> bubblesList = Arrays.asList(bubbles);
-        //bubblesList.size();
-
-        this.water.pump(bubblesList);
+    public Bottle(double volume, Material materialBottle) {
+        super (2.0);
+        this.water = new SparklingWater();
         this.warm(3);
-
+        System.out.printf("The bottle of "+ volume + " volume " + "is created.").println();
     }
 
     public void open(){
         this.water.setOpened(true);
-        this.water.degas(water.getTemperature());
+        //this.water.degas(bubbles);
     }
 
     public SparklingWater getWater() {

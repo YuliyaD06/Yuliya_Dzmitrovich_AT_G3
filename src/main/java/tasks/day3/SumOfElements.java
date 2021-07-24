@@ -37,6 +37,8 @@ public class SumOfElements {
 
     public static void main(String[] args) {
         //Stream.generate(() -> (int)(Math.random()) * 30).limit(10).
+
+        //Через коллектор
     }
 
 }

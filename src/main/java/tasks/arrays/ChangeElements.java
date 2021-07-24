@@ -29,6 +29,6 @@ public class ChangeElements {
     public static void main(String[] args) {
         List<Integer> elementsList = Arrays.asList(3, 5, 9, 7);
         System.out.println("Первый элемент " + elementsList.stream().findFirst().get());
-        System.out.println("последний элемент " + elementsList.stream().sorted((x, y) -> -x.compareTo(y)));
+        System.out.println("последний элемент " + elementsList.stream().skip(elementsList.size()-1).findAny().get());
     }
 }

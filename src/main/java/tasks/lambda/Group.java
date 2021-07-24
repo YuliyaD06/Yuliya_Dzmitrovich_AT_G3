@@ -14,3 +14,7 @@ public class Group {
 
     }
 }
+
+//или, например, делать специализированный интстрим, который поддерживает понятие диапазона:
+//IntStream.rangeClosed(1, 10).boxed().map(i -> new Bottle("name " + i)).collect(Collectors.toList()).forEach(System.out::println); - тут создадим 10 новых бутылок с уникальными именами
+//*метод boxed() - специфическая штука, которая примитивные инты автоматом упакует в обьект Integer
