@@ -1,0 +1,101 @@
+XPathes for Spartak:
+- Лого
+//img[@title='Спартак']
+//a[@class='header_logo_img']/img
+- Информация для партнеров
+//a[@href='/partners/' and @class='has_child']
+//a[@href='/partners/']/span
+- Язык
+//a[@href='/cn/']
+//div[@class='header__lang']/a[last()]
+- Динам лого
+4.1
+4.2
+- Наши представительства
+//li[@id='bx_3218110189_4655']
+//li[@id='bx_3218110189_4655']/a[@href='/contacts/affiliates/']
+- О компании
+//div[@class='top_block']/h3[@class='main-head'] / ???? text
+6.2
+- VK лого
+//a[@href='https://vk.com/spartakby']
+7.2
+- Конфеты
+//a[@href='/products/konfety/' and @class='thumb']
+//a[@href='/products/konfety/']/img[@title='Конфеты']
+- Смотреть все новинки
+//a[@href='/products/novinki/' and @class='gold-btn']
+//div[@class='btn-wrap']/a[@href='/products/novinki/']
+- Для слабовидящих
+//span[@class='header__eye']
+//div/span[@class='header__eye']
+- Flex
+//li/a[1]
+//a[@class='flex-active']
+- Up button
+//div[@class='up']
+//div[@style='display: flex;']
+
+
+
+XPathes for MAIL.RU
+Регистрация
+1.1
+1.2
+
+Кнопка найти
+//button[@id='search:submit']
+//button[@data-testid='search-button']
+
+Картинки
+//a[@data-name='pictures']
+//div[@id='search__categories']/a[contains(., 'pictures')] / ?????
+//div[@id='search__categories']/a[3]
+
+Search label
+4.1 //label[contains(., 'search__icon')] ??? <label for="q" class="search__icon svelte-bzi5vs"></label>
+4.2
+
+Леди
+//a[@href='//lady.mail.ru/']
+//a[@data-testid='news-tabs-tab-item-lady']
+
+Все проекты
+6.1 //div[@tabindex='0']
+6.2 //div[@tabindex='0' and contains(., 'all-project')] ????
+
+Мой мир
+7.1
+7.2
+
+Облако
+//a[@title='Облако']
+//a[@data-testid='mailbox-head-cloud-icon']
+
+Domain
+9.1 //div[@class='domain-text svelte-1eyrl7y']
+9.2
+
+Ввести пароль
+10.1 //button[@data-testid='enter-password']
+10.2
+
+Создать почту
+11.1 //a[@data-testid='mailbox-create-link']
+11.2
+
+Одноклассники
+12.1
+12.2
+
+Статья
+13.1 //a[@data-testid='news-item-title' and @name='n355785452']
+13.2
+
+Currency
+14.1 //a[@data-testid='rates-item']
+14.2
+
+Реклама
+15.1 //a[@href='//sales.mail.ru/']
+15.2
