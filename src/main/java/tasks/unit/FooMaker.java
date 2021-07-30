@@ -9,78 +9,29 @@ package main.java.tasks.unit;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 public class FooMaker {
 
     private int random = (int) (Math.random() * 100);
 
-    LocalDate date = LocalDate.now();
-    DayOfWeek weekDay = date.getDayOfWeek();
-
     public int getDayOfWeek(){
-        return switch (weekDay) {
-            case MONDAY -> 1;
-            case TUESDAY -> 2;
-            case WEDNESDAY -> 3;
-            case THURSDAY -> 4;
-            case FRIDAY -> 5;
-            case SATURDAY -> 6;
-            case SUNDAY -> 7;
-        };
+        return Calendar.DAY_OF_WEEK;
     }
 
     public int getDayOfWeek(int next){
-        date = date.plusDays(next);
-        weekDay = date.getDayOfWeek();
-        return switch (weekDay) {
-            case MONDAY -> 1;
-            case TUESDAY -> 2;
-            case WEDNESDAY -> 3;
-            case THURSDAY -> 4;
-            case FRIDAY -> 5;
-            case SATURDAY -> 6;
-            case SUNDAY -> 7;
-        };
+        return Calendar.DAY_OF_WEEK + next;
     }
 
     public int getNextDayOfWeek(){
-        date = date.plusDays(1);
-        weekDay = date.getDayOfWeek();
-        return switch (weekDay) {
-            case MONDAY -> 1;
-            case TUESDAY -> 2;
-            case WEDNESDAY -> 3;
-            case THURSDAY -> 4;
-            case FRIDAY -> 5;
-            case SATURDAY -> 6;
-            case SUNDAY -> 7;
-        };
+        return Calendar.DAY_OF_WEEK + 1;
     }
 
     public int getDayFoo(){
-        int next = 3;
-        date = date.plusDays(next);
-        weekDay = date.getDayOfWeek();
-        return switch (weekDay) {
-            case MONDAY -> 1;
-            case TUESDAY -> 2;
-            case WEDNESDAY -> 3;
-            case THURSDAY -> 4;
-            case FRIDAY -> 5;
-            case SATURDAY -> 6;
-            case SUNDAY -> 7;
-        };
+        return Calendar.DAY_OF_WEEK + getRandom();
     }
 
     public int getRandom() {
         return random;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public DayOfWeek getWeekDay() {
-        return weekDay;
     }
 }

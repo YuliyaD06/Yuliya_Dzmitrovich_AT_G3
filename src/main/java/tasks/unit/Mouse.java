@@ -10,31 +10,30 @@ import java.util.regex.Pattern;
 
 public class Mouse {
 
-    private String pattern = "Mouse" ;
+    private String pattern = "Mouse <%s>";
     private String name;
-    int n;
 
 
     public Mouse(int number) {
-        this.n = number;
-/*        StringBuilder builder = new StringBuilder();
-        for (int i = 1; i < n; i++){
-            builder.append(n);
-        }*/
+        name = String.format("Mouse <%s>", number);
     }
 
-    public void peep(){
-        System.out.println("Mouse " + "<n>" + " PEEP!");
+    public void peep() {
+        System.out.println(getName() + " PEEP!");
 
         new Thread(() -> {
             try {
-                int secToWait = 1000 * 2;
-                Thread.currentThread().sleep(secToWait);
+                Thread.currentThread().sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }).start();
     }
+
+    public String getName() {
+        return name;
+    }
+
 
 }

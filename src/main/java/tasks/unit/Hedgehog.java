@@ -6,4 +6,22 @@ package main.java.tasks.unit;
 //метод public void tellMe() - печатает в консоль фразу в формате "I am Hedgehog <n>!",
 // где n - порядковый номер eжа и заставляет поток заснуть на 50мс
 public class Hedgehog {
+    private String pattern = "Hedgehog <%s>";
+    private String name;
+
+    public Hedgehog(int number) {
+        name = String.format("Hedgehog <%s>", number);
+    }
+
+    public void tellMe(){
+        System.out.println("I am " + name + "!");
+        new Thread(() -> {
+            try {
+                Thread.currentThread().sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }).start();
+    }
 }
